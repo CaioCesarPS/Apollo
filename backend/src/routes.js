@@ -12,7 +12,7 @@ routes.put('/users/:id', newUsercontroller.editUser);
 routes.delete('/users/:id', newUsercontroller.deleteUser);
 
 routes.get('/orders', newOrderController.showAll)
-routes.get('/orders?:id', newOrderController.showSpecific)
+routes.get('/orders/:id', newOrderController.showSpecific)
 routes.post('/orders', newOrderController.create)
 
 
