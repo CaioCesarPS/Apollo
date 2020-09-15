@@ -1,6 +1,6 @@
 exports.up = function(knex){
     return knex.schema.createTable('orders', function(table){
-        table.string('id').primary();
+        table.string('order_id').primary();
         table.string('user_id')
             .references('users.id')
             .notNullable()

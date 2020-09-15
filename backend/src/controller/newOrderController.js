@@ -26,13 +26,13 @@ module.exports = {
     },
 
     async create(req, res){
-        const id = crypto.randomBytes(4).toString('HEX');
+        const order_id = crypto.randomBytes(4).toString('HEX');
         const { order, priece } = req.body;
         const user_id = req.headers.autorization;
 
         if(user_id){
             const [createdOrder] = await connection('orders').insert({
-                id,
+                order_id,
                 order,
                 priece,
                 user_id
@@ -46,6 +46,16 @@ module.exports = {
     },
 
     async showSpecific(req, res){
-        
+        //pegando id do usuario passado pela rota
+        const { id } = req.params;
+
+
+            const orders = await connection('orders')
+            .where('order_id', id)
+
+            console.log(orders)
+            return res.json(orders)
+
+
     }
 }
